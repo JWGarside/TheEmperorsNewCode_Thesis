@@ -93,7 +93,7 @@ node CS2_test_new_prompt.js -p SliceGAN-paper.pdf -z SliceGAN-master-anisotropic
 ```
 
 #### Extended Thinking Analysis (Claude Opus 4)
-Output results folder set to "CS2 Results Output/CS2 Opus 4" by default.  
+Output results folder set to "CS2 Results Output/CS2 Opus 4" by default. The output from extended thinking experiments with Sonnet 3.7 are under "CS2 Results Output/CS2 extended thinking results"
 
 ```bash
 node CS2_extended_thinking_test.js -p paper.pdf -z codebase.zip
