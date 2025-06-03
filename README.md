@@ -6,27 +6,65 @@ This repository contains the relevant files used for comparing research papers w
 
 The tools use various LLMs (Claude, OpenAI GPT, Gemini) to analyse research papers (PDF format) against accompanying code implementations, identifying potential discrepancies that could affect reproducibility. 
 
-## Prerequisites
-**Required Dependencies**
-Install the following Node.js packages:
+## Installation
+
+### Step 1: Clone the Repository
 
 ```bash
-npm install @anthropic-ai/sdk commander uuid
-npm install openai  # For OpenAI experiments
-npm install @google/generative-ai  # For Gemini experiments
-npm install adm-zip  # For CS2 experiments (zip handling)
-npm install dotenv  # Optional, for environment variables
+git clone https://github.com/yourusername/your-repo-name.git
+cd your-repo-name
 ```
 
-**API Keys**
-Set up your API keys as environment variables in a .env file. Set the location such that the javascript file used to execute the comparison can access it within the folder:
+### Step 2: Install Dependencies
 
+```bash
+npm install
+```
+
+This will automatically install all required packages listed in `package.json`:
+- @anthropic-ai/sdk (Claude API)
+- openai (OpenAI GPT API)
+- @google/generative-ai (Gemini API)
+- commander (CLI interface)
+- uuid (unique identifiers)
+- adm-zip (zip file handling)
+- dotenv (environment variables)
+
+### Step 3: Set Up API Keys
+
+Set up your API keys using one of these methods:
+
+**Option 1: Environment Variables (Recommended)**
 ```bash
 export ANTHROPIC_API_KEY="your-anthropic-api-key"
 export OPENAI_API_KEY="your-openai-api-key" 
 export GOOGLE_API_KEY="your-google-api-key"
 ```
-Alternatively, you can hardcode them in the respective files or pass them via command line arguments.
+
+**Option 2: .env File**
+```bash
+echo "ANTHROPIC_API_KEY=your-anthropic-key" >> .env
+echo "OPENAI_API_KEY=your-openai-key" >> .env
+echo "GOOGLE_API_KEY=your-google-key" >> .env
+```
+
+**Option 3: Command Line Arguments**
+```bash
+# Pass API key directly when running scripts
+node CS2_test_new_prompt.js -p paper.pdf -z code.zip --api-key your-api-key
+```
+**Option 4: Hardcode Into Each File**
+
+```javascript
+const effectiveApiKey = "LongStringOfNumbersAndLettersWhichIsYourAPIKey" || process.env.GOOGLE_API_KEY;
+```
+
+
+### Prerequisites
+
+- **Node.js** (version 14 or higher)
+- **npm** (comes with Node.js)
+- API keys for the models you want to use
 
 ## CS1 Experiments - A Baseline Test with single files
 CS1 experiments compare a research paper (PDF) with a single code file. The original MNIST.py code to run this experiment is based upon the MNIST digit classification from [machinelearningmastery.com](https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-from-scratch-for-mnist-handwritten-digit-classification/). If you wish to actually run the MNIST.py code, follow his instructions for setup (downloading Keras and Tensorflow) and execution.
@@ -93,7 +131,7 @@ node CS2_test_new_prompt.js -p SliceGAN-paper.pdf -z SliceGAN-master-anisotropic
 ```
 
 #### Extended Thinking Analysis (Claude Opus 4)
-Output results folder set to "CS2 Results Output/CS2 Opus 4" by default.  
+Output results folder set to "CS2 Results Output/CS2 Opus 4" by default. The output from extended thinking experiments with Sonnet 3.7 are under "CS2 Results Output/CS2 extended thinking results"
 
 ```bash
 node CS2_extended_thinking_test.js -p paper.pdf -z codebase.zip
@@ -196,8 +234,8 @@ All experiments generate markdown files with the following structure:
 
 ### Output Naming Convention
 
-- **CS1**: `{codename}_Run{number}.md`
-- **CS2**: `{zipname}_Run{number}_{model}.md`
+- **CS1**: `{codename}_Run{number}.md` 
+- **CS2**: `{zipname}_Run{number}_{model}.md` - some of the pre-existing results folders for extended thinking have been manually renamed post-hoc to signify the tokens used
 
 ## Model Configuration
 
@@ -207,9 +245,11 @@ All experiments generate markdown files with the following structure:
 
 ### OpenAI Models  
 - **Default**: `o4-mini`
+- **Alternative**: `o3`
 
 ### Gemini Models
 - **Default**: `gemini-2.5-pro-preview-05-06`
+- **Alternative**: `gemini-2.5-flash-preview-05-20`
 
 ## Semantic Chunking (CS2)
 
