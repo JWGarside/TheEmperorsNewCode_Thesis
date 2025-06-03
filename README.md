@@ -196,8 +196,8 @@ All experiments generate markdown files with the following structure:
 
 ### Output Naming Convention
 
-- **CS1**: `{codename}_Run{number}.md`
-- **CS2**: `{zipname}_Run{number}_{model}.md`
+- **CS1**: `{codename}_Run{number}.md` 
+- **CS2**: `{zipname}_Run{number}_{model}.md` - some of the pre-existing results folders for extended thinking have been manually renamed post-hoc to signify the tokens used
 
 ## Model Configuration
 
@@ -207,9 +207,11 @@ All experiments generate markdown files with the following structure:
 
 ### OpenAI Models  
 - **Default**: `o4-mini`
+- **Alternative**: `o3`
 
 ### Gemini Models
 - **Default**: `gemini-2.5-pro-preview-05-06`
+- **Alternative**: `gemini-2.5-flash-preview-05-20`
 
 ## Semantic Chunking (CS2)
 
