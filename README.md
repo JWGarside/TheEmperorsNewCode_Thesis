@@ -29,7 +29,7 @@ export GOOGLE_API_KEY="your-google-api-key"
 Alternatively, you can hardcode them in the respective files or pass them via command line arguments.
 
 ## CS1 Experiments - Single File Analysis
-CS1 experiments compare a research paper (PDF) with a single code file.
+CS1 experiments compare a research paper (PDF) with a single code file. The original MNIST.py code to run this experiment is based upon the MNIST digit classification from [machinelearningmastery.com]([www.google.com](https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-from-scratch-for-mnist-handwritten-digit-classification/). If you wish to actually run the MNIST.py code, follow his instructions for setup (downloading Keras and Tensorflow) and execution.
 
 ### Available Scripts
 **paper_code_compare_batch.js** - Basic comparison with default prompting
