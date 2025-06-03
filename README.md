@@ -1,4 +1,4 @@
-# TheEmperorsNewCode_Thesis
+# Guidance for Independent Researchers
 
 This repository contains the relevant files used for comparing research papers with their corresponding code implementations to asses reproducibility and identify discrepancies. The CS1 folder contains the relevant materials for Case Study 1, and the CS2 folder contains the relevant materials for Case Study 2.
 
